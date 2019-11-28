@@ -2,6 +2,8 @@
 Script that generates table of contents based on headers in markdown language text.  
 Script deletes previous table of content and creates new one according to file.  
 
+Unsolved(yet) problems:  
+- # in comments break the link creating method
 
 ## Usage:  
 Run the script specifying input file path and (optionally) output file path.
