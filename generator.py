@@ -21,18 +21,18 @@ def generate_head1(head1, index, link_index):
     if head1[0] == '#':
         head1 = head1[1:]
 
-    return '{}. [{}](#p{})'.format(index, head1, link_index)
+    return f'{index}. [{head1}](#p{link_index})'
 
 def generate_head2(head2, index, link_index):
     """Generate 'h2' item in toc"""
     if head2[:2] == '##':
         head2 = head2[2:]
     
-    return '    {}. [{}](#p{})'.format(index, head2, link_index)
+    return f'\t{index}. [{head2}](#p{link_index})'
 
 def generate_alink(index):
     """Create 'a' link for header item in toc"""
-    return '<a name="p{}"></a>'.format(index)
+    return f'<a name="p{index}"></a>'
 
 
 def generate_toc_in_file(input_file_path, output_file_path):
@@ -69,13 +69,13 @@ def generate_toc_in_file(input_file_path, output_file_path):
             
             link_index += 1
             # append to toc and output text
-            toc = '{}\n{}'.format(toc, header)
-            output = '{}{} {}\n'.format(output, line, alink)
+            toc = f'{toc}\n{header}'
+            output = f'{output}{line} {alink}\n'
             
         else:
-            output = '{}{}'.format(output, line)
+            output = f'{output}{line}'
     
-    output = '{}\n\n{}'.format(toc, output)
+    output = f'{toc}\n\n{output}'
     
     input_file.close()
 
